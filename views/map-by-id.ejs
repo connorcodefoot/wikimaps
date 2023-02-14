@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- Internal Styles-->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <!-- External Scripts-->
+  <script src="/vendor/jquery-3.0.0.js"></script>
+
+
+  <!-- Internal Scrips-->
+  <script defer src="/scripts/app.js"></script>
+  <style>
+    #map {
+      height: 500px;
+      width: 600px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div>
+    <h1>
+      <%= mapByID.name %>
+    </h1>
+  </div>
+  <div id="map"></div>
+
+  <script>
+
+    let latitude = <%- mapByID.lat %>
+    let longitude = <%- mapByID.lng %>
+    let zoomed = <%- mapByID.zoom %>
+
+    function initMap() {
+      let map;
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: latitude, lng: longitude },
+        zoom: zoomed,
+        });
+      ;
+
+      const contentString = "<div style='float:left'><img src='https://media.istockphoto.com/id/1358132613/photo/refreshing-hot-cup-of-coffee-at-a-cafe.jpg?b=1&s=170667a&w=0&k=20&c=yWCgrKacdKBjpwTStBv8IBnMjuIECKUTfuCtkAfyMlc=' style='max-width:100px'></div><div style='float:right; padding: 10px;'><b><h1>Lumine Coffee Shop</h1></b><br/>123 Address<br/>This is a great coffee shop. Good donuts with fast service</div>"
+
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        ariaLabel: 'Coffee Shop',
+      });
+
+
+      const marker = new google.maps.Marker({
+        position: {
+          lat: 49.2681,
+          lng: -123.1495
+        },
+        map,
+        title: "Lumine Coffee Shop",
+      });
+
+      marker.addListener("click", () => {
+        infowindow.open({
+          anchor: marker,
+          map,
+        });
+      });
+
+
+    }
+
+    window.initMap = initMap();
+
+
+  </script>
+</body>
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATkWMFgMKb9TmU_CmbD9EteeklG2gkC3M&callback=initMap&v=weekly"
+  defer></script>
+
+</html>
