@@ -18,7 +18,11 @@
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+
+  <% mapsList.forEach(e => { %>
+  <h1><a href="/maps/<%= e.id %>"><%= e.name %></a></h1>
+  <% }); %>
+
 </body>
 
 </html>
