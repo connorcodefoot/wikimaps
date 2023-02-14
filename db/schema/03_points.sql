@@ -6,6 +6,6 @@ CREATE TABLE points (
   title VARCHAR(255),
   description TEXT,
   image TEXT,
-  lat TEXT,
-  lng TEXT
+  latitude TEXT,
+  longitude TEXT
 );
