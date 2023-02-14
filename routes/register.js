@@ -3,9 +3,9 @@ const router = express.Router();
 const users = require('../db/queries/users');
 
 const findEmail = (email, database) => {
-  for (const user in database) {
-    if (database[user].email === email) {
-      return database[user];
+  for (const users in database) {
+    if (database[users].email === email) {
+      return database[users];
     }
   }
   return undefined;
@@ -20,8 +20,7 @@ app.get('/register', (req, res) => {
     res.redirect('/login');
     return;
   }
-  const templateVars = {user: users[req.session.userID]};
-  res.render('registration', templateVars);
+  res.render('registration');
 });
 
   app.post('/register', (req, res) => {
