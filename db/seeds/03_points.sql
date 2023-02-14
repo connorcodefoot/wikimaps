@@ -1,0 +1,1 @@
+INSERT INTO points (map_id, title, description, image, lat, lng) VALUES (3, 'Coffee Shop 2', 'This is a really really good shop', 'https://media.istockphoto.com/id/1358132613/photo/refreshing-hot-cup-of-coffee-at-a-cafe.jpg?b=1&s=170667a&w=0&k=20&c=yWCgrKacdKBjpwTStBv8IBnMjuIECKUTfuCtkAfyMlc=', 49.278430, -123.112680);
