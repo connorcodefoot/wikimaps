@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,15 +54,15 @@
       let image;
       let pointLatitude;
       let pointLongitude;
+      let infoArray = [];
+      let markers = [];
 
-
-
-      <% points.forEach((e) => { %>;
-        title = '<%= e.title %>';
-        description = '<%= e.description %>';
-        image = '<%= e.image %>';
-        pointLatitude = <%= e.latitude %>;
-        pointLongitude = <%= e.longitude %>;
+      <% for (let i = 0; i < points.length; i++) { %>;
+        title = '<%= points[i].title %>';
+        description = '<%= points[i].description %>';
+        image = '<%= points[i].image %>';
+        pointLatitude = <%= points[i].latitude %>;
+        pointLongitude = <%= points[i].longitude %>;
 
         marker = new google.maps.Marker({
           position: {
@@ -80,19 +79,16 @@
             lng: pointLongitude
           },
           content: `<div style='float:left'><img src=${image} style='max-width:100px'></div><div style='float:right; padding: 10px;'><b><h1>${title}</h1></b><br/>${description} </div>`,
-          ariaLabel: 'nothing'
+        });
+
+        infoArray.push(infowindow);
+
+        google.maps.event.addListener(marker, 'click', function(){
+          infowindow.open(map, this);
         });
 
 
-        marker.addListener("click", () => {
-          infowindow.open({
-            map,
-          });
-        })
-
-      <% }) %>;
-
-
+      <% } %>;
     }
 
 
