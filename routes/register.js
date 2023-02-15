@@ -15,10 +15,10 @@ const findEmail = (email, database) => {
 function generateRandomString() {
   return Math.random().toString(36).substring(2, 8);
 }
-//if logged in reroutes to login page
+//if logged in reroutes to home page
 router.get('/', (req, res) => {
-  if (req.session.email){
-    res.redirect('/login');
+  if (req.session.userID){
+    res.redirect('/home');
     return;
   }
   res.render('register');
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
           password: req.body.password
         }
         req.session.userID = userID
-        res.redirect('/login')
+        res.redirect('/')
       } else { res.statusCode = 400;
         res.send('<h2>400  Bad Request<br>Email already registered.</h2>')
       }
@@ -48,19 +48,5 @@ router.post('/', (req, res) => {
       res.send('<h2>400  Bad Request<br>Please fill out the email and password fields.</h2>')
     }
   });
-
-
-
-
-
-  //     } else {
-  //       res.statusCode = 400;
-  //       res.send('<h2>400  Bad Request<br>Email already registered.</h2>')
-  //     }
-  //   } else {
-  //     res.statusCode = 400;
-  //     res.send('<h2>400  Bad Request<br>Please fill out the email and password fields.</h2>')
-  //   }
-  // });
 
 module.exports = router;
