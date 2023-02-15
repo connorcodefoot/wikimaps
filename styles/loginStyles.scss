@@ -59,3 +59,14 @@ h1 {
   background: #ffc107;
   color: #000;
 }
+
+.loginbox a {
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 20px;
+  color: darkgrey;
+}
+
+.loginbox a:hover {
+  color: #ffc107;
+}
