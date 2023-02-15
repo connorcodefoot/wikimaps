@@ -15,15 +15,15 @@ function generateRandomString() {
   return Math.random().toString(36).substring(2, 8);
 }
 
-app.get('/register', (req, res) => {
-  if (req.session.userID){
-    res.redirect('/login');
-    return;
-  }
-  res.render('registration');
+router.get('/', (req, res) => {
+  // if (req.session.userID){
+  //   res.redirect('/login');
+  //   return;
+  // }
+  res.render('register');
 });
 
-  app.post('/register', (req, res) => {
+  router.post('/', (req, res) => {
     if (req.body.email && req.body.password) {
       if (!findEmail(req.body.email, users)) {
         const userID = generateRandomString();
