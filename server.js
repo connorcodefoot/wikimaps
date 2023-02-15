@@ -39,7 +39,7 @@ const usersRoutes = require('./routes/users');
 const login = require('./routes/login');
 const indexRoute = require('./routes/index')
 const pointsDelete = require('./routes/points-delete')
-
+const pointsEdit = require('./routes/points-edit.js')
 
 
 
@@ -55,6 +55,7 @@ app.use('/login', login);
 app.use('/points', pointRoutes)
 app.use('/maps/edit/', mapsEditRoutes)
 app.use('/points/delete', pointsDelete)
+app.use('/points/edit', pointsEdit)
 
 // Note: mount other resources here, using the same pattern above
 
