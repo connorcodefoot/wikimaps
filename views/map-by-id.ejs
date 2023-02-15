@@ -58,6 +58,7 @@
       let counter = 0;
 
       <% for (let i = 0; i < points.length; i++) { %>;
+
         title = '<%= points[i].title %>';
         description = '<%= points[i].description %>';
         image = '<%= points[i].image %>';
@@ -84,14 +85,15 @@
 
         infoArray.push(infowindow);
 
-        marker.addListener('click', function(){
+        google.maps.event.addListener(marker, 'click', function(){
         infoArray[counter].open(map, this);
-
         counter++
-        });
+      });
 
 
       <% } %>;
+
+
     }
 
 
