@@ -30,7 +30,7 @@ app.use(cookieParser());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-mapsEditRoutes = require ('./routes/maps-edit')
+const mapsEditRoutes = require ('./routes/maps-edit')
 const pointRoutes = require('./routes/points')
 const mapRoutes = require('./routes/maps')
 const userApiRoutes = require('./routes/users-api');
@@ -38,6 +38,9 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const login = require('./routes/login');
 const indexRoute = require('./routes/index')
+const pointsDelete = require('./routes/points-delete')
+
+
 
 
 // Mount all resource routes
@@ -51,6 +54,7 @@ app.use('/users', usersRoutes);
 app.use('/login', login);
 app.use('/points', pointRoutes)
 app.use('/maps/edit/', mapsEditRoutes)
+app.use('/points/delete', pointsDelete)
 
 // Note: mount other resources here, using the same pattern above
 
