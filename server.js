@@ -5,11 +5,8 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
-<<<<<<< HEAD
 const cookieSession = require('cookie-session')
-=======
 const cookieParser = require('cookie-parser');
->>>>>>> 407565d1990af27a5b6059bf84605d0bd3216652
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -44,15 +41,11 @@ const mapRoutes = require('./routes/maps')
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-<<<<<<< HEAD
-const indexRoute = require('./routes/index');
 const registerRoutes = require('./routes/register');
-=======
 const login = require('./routes/login');
 const indexRoute = require('./routes/index')
 
 
->>>>>>> 407565d1990af27a5b6059bf84605d0bd3216652
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api
@@ -61,12 +54,9 @@ app.use('/maps', mapRoutes);
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-<<<<<<< HEAD
 app.use('/register', registerRoutes);
-=======
 app.use('/login', login);
 app.use('/points', pointRoutes)
->>>>>>> 407565d1990af27a5b6059bf84605d0bd3216652
 
 // Note: mount other resources here, using the same pattern above
 

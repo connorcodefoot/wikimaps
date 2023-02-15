@@ -13,11 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.4.2",
-<<<<<<< HEAD
     "cookie-session": "^2.0.0",
-=======
     "cookie-parser": "^1.4.6",
->>>>>>> 407565d1990af27a5b6059bf84605d0bd3216652
     "dotenv": "^2.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
