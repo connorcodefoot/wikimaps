@@ -55,7 +55,7 @@
       let pointLatitude;
       let pointLongitude;
       let infoArray = [];
-      let markers = [];
+      let counter = 0;
 
       <% for (let i = 0; i < points.length; i++) { %>;
         title = '<%= points[i].title %>';
@@ -79,12 +79,15 @@
             lng: pointLongitude
           },
           content: `<div style='float:left'><img src=${image} style='max-width:100px'></div><div style='float:right; padding: 10px;'><b><h1>${title}</h1></b><br/>${description} </div>`,
+          ariaLabel: 'nothing'
         });
 
         infoArray.push(infowindow);
 
-        google.maps.event.addListener(marker, 'click', function(){
-          infowindow.open(map, this);
+        marker.addListener('click', function(){
+        infoArray[counter].open(map, this);
+
+        counter++
         });
 
 
