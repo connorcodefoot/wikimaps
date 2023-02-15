@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" type="text/css" href="/styles/loginStyles.css">
+</head>
+
+<body>
+    <form action="/points/edit/update/<%= point.id %>" method="POST">
+      <h3>Title</h3>
+      <input type="text" name="title" value ='<%= point.title %>'>
+      <h3>Latitude</h3>
+      <input type="text" name="latitude" value='<%= point.latitude %>'>
+      <h3>Longitude</h3>
+      <input type="text" name="longitude" value='<%= point.longitude %>'>
+      <h3>Description</h3>
+      <input type="text" name="description" value='<%= point.description %>'>
+      <h3>Image URL</h3>
+      <input type="text" name="image" value='<%= point.image %>'>
+      <input type="submit">
+    </form>
+  </div>
+</body>
+
+</html>
