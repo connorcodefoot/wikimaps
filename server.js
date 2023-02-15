@@ -30,6 +30,7 @@ app.use(cookieParser());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
+mapEditRoutes = require ('./routes/maps-edit')
 const pointRoutes = require('./routes/points')
 const mapRoutes = require('./routes/maps')
 const userApiRoutes = require('./routes/users-api');
@@ -49,6 +50,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/login', login);
 app.use('/points', pointRoutes)
+app.use('/maps/edit/:id', mapsEditRoutes)
 
 // Note: mount other resources here, using the same pattern above
 

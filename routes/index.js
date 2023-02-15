@@ -4,7 +4,7 @@ const router  = express.Router();
 const indexQueries = require('../db/queries/index');
 
 router.get('', (req, res) => {
-  indexQueries.getMaps()
+  return indexQueries.getMaps()
     .then(mapsList => {
       console.log(mapsList)
       return res.render('index', { mapsList })

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,13 @@
 
 <body>
     <form action="/points/new" method="POST">
-      <input type="number" name="mapID" placeholder="Enter Map ID">
+      <input list="Maps">
+      <datalist id="Maps">
+        <% allMaps.forEach(e => { %>;
+        <option value="<%=e.name %>">
+        <% }) %>;
+      </datalist>
+      <input id ="mapID" type="text" name="mapID">
       <input type="text" name="latitude" placeholder="Point Latitude">
       <input type="text" name="longitude" placeholder="Point Longitude">
       <input type="text" name="title" placeholder="Title">

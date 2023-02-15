@@ -1,13 +1,19 @@
 const express = require('express');
 const router  = express.Router();
 const newPoint  = require('../db/queries/new-point');
+const allMaps = require('../db/queries/all-maps')
+
 
 router.get('/new', (req, res) => {
-    res.render('new-point')
+  return allMaps.getAllMaps()
+    .then((allMaps) => {
+      console.log(allMaps)
+      res.render('new-point', { allMaps })
+    })
 });
 
 router.post('/new', (req, res) => {
-  newPoint.addPointToDB(req.body)
+  return newPoint.addPointToDB(req.body)
   .then(() => {
     res.redirect(`/maps/${req.body.mapID}`)
   })
