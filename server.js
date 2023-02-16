@@ -44,7 +44,6 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const login = require('./routes/login');
-const indexRoute = require('./routes/index')
 const pointsDelete = require('./routes/points-delete')
 const pointsEdit = require('./routes/points-edit.js')
 const indexRoute = require('./routes/index');

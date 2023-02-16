@@ -1,0 +1,30 @@
+body {
+  background-color: #f1f1f1;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  text-align: center;
+
+}
+
+header {
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 0 3px #000;
+  font-family: sans-serif;
+}
+
+header li {
+  display: inline;
+  padding-left: 45px;
+}
+
+header li a {
+  color: #333;
+  text-decoration: none;
+  padding: 13px;
+}
+
+header li a:hover{
+  color: royalblue;
+}
