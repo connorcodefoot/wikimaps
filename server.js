@@ -44,9 +44,11 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const login = require('./routes/login');
-const indexRoute = require('./routes/index')
 const pointsDelete = require('./routes/points-delete')
 const pointsEdit = require('./routes/points-edit.js')
+const profile = require('./routes/profile')
+const indexRoute = require('./routes/index');
+
 
 
 
@@ -64,6 +66,10 @@ app.use('/points', pointRoutes)
 app.use('/maps/edit/', mapsEditRoutes)
 app.use('/points/delete', pointsDelete)
 app.use('/points/edit', pointsEdit)
+app.use('/profile', profile )
+app.use('/points', pointRoutes);
+
+
 
 // Note: mount other resources here, using the same pattern above
 
