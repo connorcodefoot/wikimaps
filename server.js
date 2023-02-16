@@ -46,6 +46,7 @@ const registerRoutes = require('./routes/register');
 const login = require('./routes/login');
 const pointsDelete = require('./routes/points-delete')
 const pointsEdit = require('./routes/points-edit.js')
+const profile = require('./routes/profile')
 const indexRoute = require('./routes/index');
 
 
@@ -65,6 +66,7 @@ app.use('/points', pointRoutes)
 app.use('/maps/edit/', mapsEditRoutes)
 app.use('/points/delete', pointsDelete)
 app.use('/points/edit', pointsEdit)
+app.use('/profile', profile )
 app.use('/points', pointRoutes);
 
 
