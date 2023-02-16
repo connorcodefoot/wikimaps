@@ -1,0 +1,13 @@
+.map-edit-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.half-map-edit {
+  flex: 1;
+}
+
+#mapEdit {
+  height: 500px;
+  width: 600px;
+}

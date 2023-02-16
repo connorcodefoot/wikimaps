@@ -84,20 +84,8 @@
         console.log(infowindows[j])
         new google.maps.Marker(markers[j])
         new google.maps.InfoWindow(infowindow[j])
-
-        let mark = markers[j]
-        let window = infowindows[j]
-
-        google.maps.event.addListener(mark, "click", function () {
-          window.open(map, mark)
-        });
       }
     }
-
-
-
-
-
     window.initMap = initMap
 
 
