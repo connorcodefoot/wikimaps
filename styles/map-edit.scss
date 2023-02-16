@@ -12,8 +12,13 @@
 }
 
 .point-list {
-  height: 80%;
+  height: 50%;
   overflow: scroll;
+}
+
+.point-list-header{
+  text-align: center;
+  margin: auto;
 }
 
 article.point {

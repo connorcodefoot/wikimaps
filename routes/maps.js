@@ -5,7 +5,6 @@ const pointsQueries = require('../db/queries/points-by-map');
 
 router.get('/:id', (req, res) => {
 
-
   const mapByID = mapQueries.getMapByID(req.params.id)
   const points = pointsQueries.pointsByMap(req.params.id)
 
@@ -16,3 +15,5 @@ router.get('/:id', (req, res) => {
 });
 
 module.exports = router;
+
+

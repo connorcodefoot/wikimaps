@@ -65,10 +65,23 @@
     </container>
     <container class='half-width'>
 
-      <div class="point-list">
-        <h2 style="text-align:center">
+      <div class="point-list-header">
+        <h1>
           <%= mapByID.name %>
-        </h2>
+        </h1>
+        </h3> Create New Point <h3></h3>
+        <form action="/points/new" method="POST">
+          <input type="text" name="latitude" placeholder="Point Latitude">
+          <input type="text" name="longitude" placeholder="Point Longitude">
+          <input type="text" name="title" placeholder="Title">
+          <input type="textarea" name="description" placeholder="Description">
+          <input type="text" name="image" placeholder="Image URL">
+          <input type="hidden" name="mapID" value="<%= mapByID.id %>">
+          <input type="submit" name="">
+        </form>
+      </div>
+
+      <div class="point-list">
         <% points.forEach(e=> { %>
           <article class="point">
             <div class="point-card">
@@ -89,14 +102,16 @@
                   <%= e.description %>
                 </h4>
               </div>
-              <hr>
               <footer>
                 <div>
                   <form action="/points/edit/<%= e.id %>/">
                     <button type="submit" class="btn btn-outline-info">&#9998</button>
-                    <form method="POST" action="/points/delete/<%= e.id %>">
-                      <button type="submit" class="btn btn-outline-danger">Delete</button>
-                    </form>
+                  </form>
+                </div>
+                <div>
+                  <form method="POST" action="/points/delete/<%= e.id %>">
+                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                  </form>
                 </div>
               </footer>
             </div>
