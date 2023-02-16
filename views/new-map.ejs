@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="/styles/new-map.css">
+</head>
+
+<body>
+  <div class="newmap">
+    <h1>Create a New Map!</h1>
+    <form action="/maps/new" method="POST">
+      <p>Centre Latitude</p>
+      <input type="text" name="latitude" placeholder="Enter Latitude">
+      <p>Centre Longitude</p>
+      <input type="text" name="longitude" placeholder="Enter Longitude">
+      <p>Size of Map</p>
+      <input type="text" name="zoom" placeholder="Enter Size">
+      <p>Name</p>
+      <input type="text" name="name" placeholder="Enter Name">
+      <input type="submit" name="" value="Create">
+    </form>
+
+  </div>
+</body>
+
+</html>

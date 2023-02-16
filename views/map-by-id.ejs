@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,56 +45,47 @@
         zoom: zoomed,
       });
 
-      // Set points
-      let contentString;
-      let infowindow;
-      let marker;
-      let title;
-      let description;
-      let image;
-      let pointLatitude;
-      let pointLongitude;
+      let markers = [];
+      let infowindows = [];
 
+      <% for (let i = 0; i < points.length; i++) { %>;
 
+        title = '<%= points[i].title %>';
+        description = '<%= points[i].description %>';
+        image = '<%= points[i].image %>';
+        pointLatitude = <%= points[i].latitude %>;
+        pointLongitude = <%= points[i].longitude %>;
 
-      <% points.forEach((e) => { %>;
-        title = '<%= e.title %>';
-        description = '<%= e.description %>';
-        image = '<%= e.image %>';
-        pointLatitude = <%= e.latitude %>;
-        pointLongitude = <%= e.longitude %>;
-
-        marker = new google.maps.Marker({
+        marker = {
           position: {
             lat: pointLatitude,
             lng: pointLongitude
           },
           map,
-          title: 'who cares'
-        });
+        };
 
-        infowindow = new google.maps.InfoWindow({
+        markers.push(marker);
+
+        infowindow = {
           position: {
             lat: pointLatitude,
             lng: pointLongitude
           },
           content: `<div style='float:left'><img src=${image} style='max-width:100px'></div><div style='float:right; padding: 10px;'><b><h1>${title}</h1></b><br/>${description} </div>`,
-          ariaLabel: 'nothing'
-        });
+          map,
+        };
 
+        infowindows.push(infowindow)
 
-        marker.addListener("click", () => {
-          infowindow.open({
-            map,
-          });
-        })
+      <% } %>;
 
-      <% }) %>;
-
-
+      for (let j = 0; j < markers.length; j++) {
+        console.log(markers[j])
+        console.log(infowindows[j])
+        new google.maps.Marker(markers[j])
+        new google.maps.InfoWindow(infowindow[j])
+      }
     }
-
-
     window.initMap = initMap
 
 
