@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
   .then((response) => {
     console.log(response.rows[0])
     req.session.id = response.rows[0].id
-    res.redirect(`/maps`)
+    res.redirect(`/`)
   })
   .catch(err => {
     res.status(400).json({ error: err.message });
