@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require('cookie-session')
 const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 8080;
@@ -28,16 +29,25 @@ app.use(
 app.use(express.static('public'));
 app.use(cookieParser());
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1'],
+}))
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-mapsEditRoutes = require ('./routes/maps-edit')
+const mapsEditRoutes = require ('./routes/maps-edit')
 const pointRoutes = require('./routes/points')
 const mapRoutes = require('./routes/maps')
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
+const registerRoutes = require('./routes/register');
 const login = require('./routes/login');
 const indexRoute = require('./routes/index')
+const pointsDelete = require('./routes/points-delete')
+const pointsEdit = require('./routes/points-edit.js')
+
 
 
 // Mount all resource routes
@@ -48,9 +58,12 @@ app.use('/maps', mapRoutes);
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+app.use('/register', registerRoutes);
 app.use('/login', login);
 app.use('/points', pointRoutes)
 app.use('/maps/edit/', mapsEditRoutes)
+app.use('/points/delete', pointsDelete)
+app.use('/points/edit', pointsEdit)
 
 // Note: mount other resources here, using the same pattern above
 
