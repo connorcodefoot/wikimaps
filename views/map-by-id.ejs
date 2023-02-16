@@ -45,17 +45,8 @@
         zoom: zoomed,
       });
 
-      // Set points
-      let contentString;
-      let infowindow;
-      let marker;
-      let title;
-      let description;
-      let image;
-      let pointLatitude;
-      let pointLongitude;
-      let infoArray = [];
-      let counter = 0;
+      let markers = [];
+      let infowindows = [];
 
       <% for (let i = 0; i < points.length; i++) { %>;
 
@@ -65,36 +56,46 @@
         pointLatitude = <%= points[i].latitude %>;
         pointLongitude = <%= points[i].longitude %>;
 
-        marker = new google.maps.Marker({
+        marker = {
           position: {
             lat: pointLatitude,
             lng: pointLongitude
           },
           map,
-          title: 'who cares'
-        });
+        };
 
-        infowindow = new google.maps.InfoWindow({
+        markers.push(marker);
+
+        infowindow = {
           position: {
             lat: pointLatitude,
             lng: pointLongitude
           },
           content: `<div style='float:left'><img src=${image} style='max-width:100px'></div><div style='float:right; padding: 10px;'><b><h1>${title}</h1></b><br/>${description} </div>`,
-          ariaLabel: 'nothing'
-        });
+          map,
+        };
 
-        infoArray.push(infowindow);
-
-        google.maps.event.addListener(marker, 'click', function(){
-        infoArray[counter].open(map, this);
-        counter++
-      });
-
+        infowindows.push(infowindow)
 
       <% } %>;
 
+      for (let j = 0; j < markers.length; j++) {
+        console.log(markers[j])
+        console.log(infowindows[j])
+        new google.maps.Marker(markers[j])
+        new google.maps.InfoWindow(infowindow[j])
 
+        let mark = markers[j]
+        let window = infowindows[j]
+
+        google.maps.event.addListener(mark, "click", function () {
+          window.open(map, mark)
+        });
+      }
     }
+
+
+
 
 
     window.initMap = initMap
