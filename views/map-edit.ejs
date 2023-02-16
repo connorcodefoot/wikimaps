@@ -44,10 +44,7 @@
             zoom: zoomed,
           });
 
-      <% points.forEach((e) => { %>;
-            title = '<%= e.title %>';
-            description = '<%= e.description %>';
-            image = '<%= e.image %>';
+          <% points.forEach((e) => { %>;
             pointLatitude = <%= e.latitude %>;
             pointLongitude = <%= e.longitude %>;
             pointID = '<%= e.id %>';
@@ -60,57 +57,52 @@
               label: pointID,
               map,
             });
-
-            infowindow = new google.maps.InfoWindow({
-              position: {
-                lat: pointLatitude,
-                lng: pointLongitude
-              },
-
-              content: `<div style='float:left'><img src=${image} style='max-width:100px'></div><div style='float:right; padding: 10px;'><b><h1>${title}</h1></b><br/>${description} </div>`,
-              ariaLabel: 'nothing'
-            });
-
-              <% }) %>;
-
-
+          <% }) %>;
         }
-
-
         window.initMap = initMap
-
 
       </script>
     </container>
     <container class='half-width'>
-      <% points.forEach(e=> { %>
-        <article class="point">
-          <div class="point-card">
-            <header>
-              <div class="point-info">
-                <span>
-                  <%= e.title %>
-                </span>
+
+      <div class="point-list">
+        <h2 style="text-align:center">
+          <%= mapByID.name %>
+        </h2>
+        <% points.forEach(e=> { %>
+          <article class="point">
+            <div class="point-card">
+              <div class="point-id">
+                <h3>
+                  <%= e.id %>
+                </h3>
               </div>
-            </header>
-            <div class="point-content">
-              <h4>
-                <%= e.description %>
-              </h4>
+              <header>
+                <div class="point-info">
+                  <span>
+                    <%= e.title %>
+                  </span>
+                </div>
+              </header>
+              <div class="point-content">
+                <h4>
+                  <%= e.description %>
+                </h4>
+              </div>
+              <hr>
+              <footer>
+                <div>
+                  <form action="/points/edit/<%= e.id %>/">
+                    <button type="submit" class="btn btn-outline-info">&#9998</button>
+                    <form method="POST" action="/points/delete/<%= e.id %>">
+                      <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </div>
+              </footer>
             </div>
-            <hr>
-            <footer>
-              <div>
-                <form action="/points/edit/<%= e.id %>/">
-                  <button type="submit" class="btn btn-outline-info">&#9998</button>
-                  <form method="POST" action= "/points/delete/<%= e.id %>">
-                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                  </form>
-              </div>
-            </footer>
-          </div>
-        </article>
-      <% }) %>
+          </article>
+          <% }) %>
+      </div>
     </container>
   </container>
 </body>
