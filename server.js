@@ -44,8 +44,6 @@ const usersRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const login = require('./routes/login');
 const indexRoute = require('./routes/index')
-const registrationConfirmationRoutes = require('./routes/registration-confirmation')
-
 
 
 // Mount all resource routes
@@ -59,7 +57,6 @@ app.use('/users', usersRoutes);
 app.use('/register', registerRoutes);
 app.use('/login', login);
 app.use('/points', pointRoutes)
-app.use('/registration-confirmation', registrationConfirmationRoutes);
 
 // Note: mount other resources here, using the same pattern above
 

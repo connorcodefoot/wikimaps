@@ -15,8 +15,10 @@ router.post('/', (req, res) => {
   let password = req.body.password
   if (email && password) {
   register.addUser(email, password)
-  .then(() => {
-    res.redirect(`/registration-confirmation`)
+  .then((response) => {
+    console.log(response.rows[0])
+    req.session.id = response.rows[0].id
+    res.redirect(`/maps`)
   })
   .catch(err => {
     res.status(400).json({ error: err.message });
