@@ -1,0 +1,25 @@
+get /index
+
+get /maps
+post /maps/new
+edit maps/edit/id
+delete /maps/delete/id
+
+get /favourites
+post /favourites/new
+delete /favourites/delete/id
+
+get /points
+post /points/new
+delete /point/delete/id
+
+
+
+get /profile
+get /register
+post /register redirect /maps
+get /login
+post /login redirect /maps
+
+
+
