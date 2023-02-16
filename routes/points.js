@@ -9,7 +9,7 @@ router.get('/new', (req, res) => {
 router.post('/new', (req, res) => {
   newPoint.addPointToDB(req.body)
   .then(() => {
-    res.redirect(`/maps/${req.body.mapID}`)
+    res.redirect(`/maps/edit/${req.body.mapID}`)
   })
   .catch(err => {
     res
