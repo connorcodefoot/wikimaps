@@ -24,11 +24,8 @@ router.post('/new', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-=======
 
 router.get('/:id', (req, res) => {
->>>>>>> 7058e4ca94583f69f26d79fa26b89b47cb817200
   const mapByID = mapQueries.getMapByID(req.params.id)
   const points = pointsQueries.pointsByMap(req.params.id)
 
