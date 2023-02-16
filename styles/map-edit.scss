@@ -1,13 +1,61 @@
-.map-edit-container {
+.full-width {
   display: flex;
-  flex-direction: column;
-}
-
-.half-map-edit {
   flex: 1;
 }
 
-#mapEdit {
-  height: 500px;
-  width: 600px;
+.half-width {
+  flex: 1;
 }
+
+#map-edit {
+  height: 100%;
+}
+
+article.point {
+  margin: 2em 2em 1em 2em;
+  border: 3px;
+  border-color: #4056A1;
+  border-style: solid;
+  border-radius: 30px;
+  transition: all .5s ease-in-out;
+  z-index: 1;
+}
+
+article.point:hover {
+  box-shadow: 5px 5px orange;
+}
+
+.point-card {
+  min-width: 100%;
+  padding: 1em 1em 1em 1em;
+}
+
+article.point header {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  align-items: center;
+}
+
+.point-info {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+article.point .point-content {
+  min-width: 100%;
+  overflow-wrap: break-word;
+}
+
+article.point footer {
+  display: flex;
+  justify-content: space-between;
+  color: #4056A1;
+  font-size: .75em;
+}
+
+
+
