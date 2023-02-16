@@ -3,15 +3,19 @@ const router = express.Router();
 const mapQueries = require('../db/queries/map-by-id');
 const pointsQueries = require('../db/queries/points-by-map');
 const newMap = require('../db/queries/newMap');
+const getLatestMap = require('../db/queries/getMaps');
 
 router.get('/new', (req, res) => {
   return res.render('new-map');
 });
 
 router.post('/new', (req, res) => {
-  newMap.createNewMap(req.body)
+  return newMap.createNewMap(req.body)
     .then(() => {
-      res.redirect('/');
+      return getLatestMap.getLastMapCreated()
+    })
+    .then((map) => {
+      res.redirect(`/maps/${map.id}`)
     })
     .catch(err => {
       res
