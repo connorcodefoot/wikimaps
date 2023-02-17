@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Profile</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -18,11 +18,16 @@
 </head>
 
 <body>
-
-  <% mapID.forEach(e => { %>
-  <h1><a href="/favourites/<%= e.id %>"><%= e.name %></a></h1>
-  <% }); %>
-
+  <div>
+    <h1>Favourite Maps:</h1>
+    <% mapNames.forEach(e => { %>
+      <h1><a href="/maps/<%= e.id %>"><%= e.name %></a></h1>
+      <% }); %>
+    <h1>Maps Contributed To</h1>
+    <% mapsContributed.forEach(e => { %>
+      <h1><a href="/maps/<%= e.id %>"><%= e.name %></a></h1>
+      <% }); %>
+  </div>
 </body>
 
 </html>
