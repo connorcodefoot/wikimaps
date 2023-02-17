@@ -1,17 +1,14 @@
 const express = require('express');
 const router  = express.Router();
-const getFavourites = require('../db/queries/get-favourites')
+const favouritesQuery = require('../db/queries/get-favourites')
+const contributionQuery = require('../db/queries/maps-contributed-to')
 
 router.get('', (req, res) => {
-  getFavourites.getFavouritesByID()
-    .then(mapID => {
-      console.log(mapsList)
-      return res.render('profile', { MapID })
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
+ const mapNames = favouritesQuery.getFavouritesByID(req.cookies.userID)
+ const mapsContributed = contributionQuery.getMapsContributedTo(req.cookies.userID)
+    return Promise.all([mapNames, mapsContributed])
+    .then(([mapNames, mapsContributed]) => {
+      return res.render('profile', { mapNames, mapsContributed })
     });
 });
 

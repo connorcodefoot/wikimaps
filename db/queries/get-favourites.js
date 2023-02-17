@@ -1,16 +1,16 @@
 const db = require('../connection');
 
-const getFavouritesByID = (id) => {
+const getFavouritesByID = function(id) {
   return db.query(
     `
-    SELECT maps.name
+    SELECT maps.*
     FROM favourites
     JOIN maps on favourites.map_id = maps.id
-    WHERE user_id = 1
+    WHERE user_id = $1
     AND favourite = true;
-    `)
+    `, [id])
     .then(data => {
-      return data.rows[2];
+      return data.rows;
     });
 };
 
