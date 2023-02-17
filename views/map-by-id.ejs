@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" type="text/css" href="/styles/header.css" />
   <link rel="stylesheet" href="/styles/map-edit.css" />
 
   <!-- External Scripts-->
@@ -27,36 +28,41 @@
 </head>
 
 <body>
-  <container class='full-width'>
-    <container class='half-width'>
-      <div id="map"></div>
-      <script>
+  <%- include('partials/header') %>
+    <div>
+    <h1>
+    </h1>
+  </div>
+    <container class='full-width'>
+      <container class='half-width'>
+        <div id="map"></div>
+        <script>
 
-        function initMap() {
+          function initMap() {
 
-          // Set Map
-          let latitude = <%= mapByID.lat %>;
-          let longitude = <%= mapByID.lng %>;
-          let zoomed = <%= mapByID.zoom %>;
-          let map;
-          map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: latitude, lng: longitude },
-            zoom: zoomed,
-          });
+            // Set Map
+            let latitude = <%= mapByID.lat %>;
+            let longitude = <%= mapByID.lng %>;
+            let zoomed = <%= mapByID.zoom %>;
+            let map;
+            map = new google.maps.Map(document.getElementById("map"), {
+              center: { lat: latitude, lng: longitude },
+              zoom: zoomed,
+            });
 
           <% points.forEach((e) => { %>;
-            pointLatitude = <%= e.latitude %>;
-            pointLongitude = <%= e.longitude %>;
-            pointID = '<%= e.id %>';
+              pointLatitude = <%= e.latitude %>;
+              pointLongitude = <%= e.longitude %>;
+              pointID = '<%= e.id %>';
 
-            marker = new google.maps.Marker({
-              position: {
-                lat: pointLatitude,
-                lng: pointLongitude
-              },
-              label: pointID,
-              map,
-            });
+              marker = new google.maps.Marker({
+                position: {
+                  lat: pointLatitude,
+                  lng: pointLongitude
+                },
+                label: pointID,
+                map,
+              });
           <% }) %>;
         }
         window.initMap = initMap
@@ -86,20 +92,14 @@
                     <h2><%= e.title %></h2>
                   </span>
                 </div>
-              </header>
-              <div class="point-content">
-                <h4>
-                  <%= e.description %>
-                </h4>
+                <footer>
+                </footer>
               </div>
-              <footer>
-              </footer>
-            </div>
-          </article>
-          <% }) %>
-      </div>
+            </article>
+            <% }) %>
+        </div>
+      </container>
     </container>
-  </container>
 </body>
 
 <script

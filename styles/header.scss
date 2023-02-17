@@ -1,0 +1,39 @@
+<<<<<<< HEAD
+=======
+body {
+  background-color: #f1f1f1;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  text-align: center;
+
+}
+
+<<<<<<< HEAD
+>>>>>>> cb1e7488e6ce824addceed418753227fff6bf78f
+=======
+>>>>>>> cb1e7488e6ce824addceed418753227fff6bf78f
+.topbar {
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 0 3px #000;
+  font-family: sans-serif;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.topbar li {
+  display: inline;
+  padding-left: 45px;
+}
+
+.topbar li a {
+  color: #333;
+  text-decoration: none;
+  padding: 13px;
+}
+
+.topbar li a:hover{
+  color: royalblue;
+}
