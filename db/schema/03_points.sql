@@ -10,3 +10,5 @@ CREATE TABLE points (
   latitude TEXT,
   longitude TEXT
 );
+
+
