@@ -17,7 +17,7 @@
   padding-bottom: 200px;
 }
 
-.point-list-header{
+.point-list-header {
   text-align: center;
   margin: auto;
 }
@@ -80,16 +80,21 @@ article.point .point-content {
 }
 
 .point-description {
+  display: flex;
   flex-basis: 50%;
+  align-self: center;
 
 }
 
 .point-image img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
-  }
+  display: flex;
+  border: 1px;
+  border-radius: 30px;
+  padding: 1em;
+  width: 15em;
+  align-self: center;
+
+}
 
 article.point footer {
   display: flex;
@@ -97,6 +102,3 @@ article.point footer {
   color: #4056A1;
   font-size: .75em;
 }
-
-
-
