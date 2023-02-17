@@ -8,11 +8,11 @@
 }
 
 #map {
-  height: 60%;
+  height: 80%;
 }
 
 .point-list {
-  height: 50%;
+  height: 70%;
   overflow: scroll;
   padding-bottom: 200px;
 }
@@ -72,9 +72,24 @@ article.point header {
 }
 
 article.point .point-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   min-width: 100%;
   overflow-wrap: break-word;
 }
+
+.point-description {
+  flex-basis: 50%;
+
+}
+
+.point-image img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+  }
 
 article.point footer {
   display: flex;

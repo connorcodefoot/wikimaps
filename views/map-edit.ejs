@@ -92,14 +92,19 @@
               <header>
                 <div class="point-info">
                   <span>
-                    <%= e.title %>
+                    <h2><%= e.title %></h2>
                   </span>
                 </div>
               </header>
               <div class="point-content">
-                <h4>
-                  <%= e.description %>
-                </h4>
+                <div class ="point-description">
+                  <h4>
+                    <%= e.description %>
+                  </h4>
+                </div>
+                <div class ="point-image">
+                  <img src="<%= e.image %>">
+                </div>
               </div>
               <footer>
                 <div>
