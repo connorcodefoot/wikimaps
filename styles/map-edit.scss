@@ -1,4 +1,5 @@
 .full-width {
+
   display: flex;
   flex: 1;
   margin-top: 5em;
@@ -9,11 +10,11 @@
 }
 
 #map {
-  height: 60%;
+  height: 80%;
 }
 
 .point-list {
-  height: 50%;
+  height: 70%;
   overflow: scroll;
   padding-bottom: 200px;
 }
