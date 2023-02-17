@@ -7,13 +7,14 @@
   flex: 1;
 }
 
-#map-edit {
-  height: 800px;
+#map {
+  height: 60%;
 }
 
 .point-list {
   height: 50%;
   overflow: scroll;
+  padding-bottom: 200px;
 }
 
 .point-list-header{
