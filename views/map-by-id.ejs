@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <title>View Map</title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +14,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/map-by-id.css" />
+  <link rel="stylesheet" href="/styles/map-edit.css" />
 
   <!-- External Scripts-->
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -25,71 +26,79 @@
 </head>
 
 <body>
-  <div>
-    <h1>
-    </h1>
-  </div>
-  <div id="map"></div>
+  <container class='full-width'>
+    <container class='half-width'>
+      <div id="map"></div>
+      <script>
 
-  <script>
+        function initMap() {
 
-    function initMap() {
+          // Set Map
+          let latitude = <%= mapByID.lat %>;
+          let longitude = <%= mapByID.lng %>;
+          let zoomed = <%= mapByID.zoom %>;
+          let map;
+          map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: latitude, lng: longitude },
+            zoom: zoomed,
+          });
 
-      // Set Map
-      let latitude = <%= mapByID.lat %>;
-      let longitude = <%= mapByID.lng %>;
-      let zoomed = <%= mapByID.zoom %>;
-      let map;
-      map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: latitude, lng: longitude },
-        zoom: zoomed,
-      });
+          <% points.forEach((e) => { %>;
+            pointLatitude = <%= e.latitude %>;
+            pointLongitude = <%= e.longitude %>;
+            pointID = '<%= e.id %>';
 
-      let markers = [];
-      let infowindows = [];
+            marker = new google.maps.Marker({
+              position: {
+                lat: pointLatitude,
+                lng: pointLongitude
+              },
+              label: pointID,
+              map,
+            });
+          <% }) %>;
+        }
+        window.initMap = initMap
 
-      <% for (let i = 0; i < points.length; i++) { %>;
+      </script>
+    </container>
+    <container class='half-width'>
 
-        title = '<%= points[i].title %>';
-        description = '<%= points[i].description %>';
-        image = '<%= points[i].image %>';
-        pointLatitude = <%= points[i].latitude %>;
-        pointLongitude = <%= points[i].longitude %>;
+      <div class="point-list-header">
+        <h1>
+          <%= mapByID.name %>
+        </h1>
+      </div>
 
-        marker = {
-          position: {
-            lat: pointLatitude,
-            lng: pointLongitude
-          },
-          map,
-        };
-
-        markers.push(marker);
-
-        infowindow = {
-          position: {
-            lat: pointLatitude,
-            lng: pointLongitude
-          },
-          content: `<div style='float:left'><img src=${image} style='max-width:100px'></div><div style='float:right; padding: 10px;'><b><h1>${title}</h1></b><br/>${description} </div>`,
-          map,
-        };
-
-        infowindows.push(infowindow)
-
-      <% } %>;
-
-      for (let j = 0; j < markers.length; j++) {
-        console.log(markers[j])
-        console.log(infowindows[j])
-        new google.maps.Marker(markers[j])
-        new google.maps.InfoWindow(infowindow[j])
-      }
-    }
-    window.initMap = initMap
-
-
-  </script>
+      <div class="point-list">
+        <% points.forEach(e=> { %>
+          <article class="point">
+            <div class="point-card">
+              <div class="point-id">
+                <h3>
+                  <%= e.id %>
+                </h3>
+              </div>
+              <header>
+                <div class="point-info">
+                  <span>
+                    <%= e.title %>
+                  </span>
+                </div>
+              </header>
+              <div class="point-content">
+                <h4>
+                  <%= e.description %>
+                </h4>
+              </div>
+              <footer>
+              </footer>
+            </div>
+          </article>
+          <% }) %>
+      </div>
+    </container>
+  </container>
 </body>
 
 <script
